@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Welkom</title>
+    <link rel="stylesheet" th:href="@{/css/security.css}">
+</head>
+<body>
+<h1>Welkom</h1>
+<div sec:authorize="hasAuthority('manager')">Enkel gebruikers met de role manager zien deze tekst</div>
+<div sec:authorize="isAuthenticated()">Enkel ingelogde gebruikers zien deze tekst</div>
+<ul>
+    <li sec:authorize-url="/offertes"><a th:href="@{/offertes}">Offertes</a></li>
+    <li sec:authorize-url="/werknemers"><a th:href="@{/werknemers}">Werknemers</a></li>
+</ul>
+<form method="post" sec:authorize="isAuthenticated()" th:action="@{/logout}">
+    <button><th:block sec:authentication="name"></th:block> Uitloggen</button>
+</form>
+<form method="get" sec:authorize="isAnonymous()" th:action="@{/login}">
+    <button>Aanmelden</button>
+</form>
+</body>
+</html>

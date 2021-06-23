@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("offertes")
-public class OfferteController {
+@RequestMapping("werknemers")
+public class WerknemerController {
     @GetMapping
-    public String offertes() {
-        return "offertes";
+    public String werknemers() {
+        return "werknemers";
     }
 }
